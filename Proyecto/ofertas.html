@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Verti by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload right-sidebar">
+		<div id="page-wrapper">
+						<!-- Logo -->
+							<div id="">
+								<h1><a href="main.html"></a></h1>
+								<h2><center>Ofertas de la semana</center></h2>
+							</div>
+
+						<!-- Nav -->
+							<nav id="nav">
+								<ul>
+									<li><a href="main.html">Inicio</a></li>
+									<li>
+										<a href="#">Productos</a>
+										<ul>
+											<li><a href="#">Lorem ipsum dolor</a></li>
+											<li><a href="#">Magna phasellus</a></li>
+											<li>
+												<a href="#">Phasellus consequat</a>
+												<ul>
+													<li><a href="#">Lorem ipsum dolor</a></li>
+													<li><a href="#">Phasellus consequat</a></li>
+													<li><a href="#">Magna phasellus</a></li>
+													<li><a href="#">Etiam dolore nisl</a></li>
+												</ul>
+											</li>
+											<li><a href="#">Veroeros feugiat</a></li>
+										</ul>
+									</li>
+									<li><a href="formulario.html">Formulario</a></li>
+									<li class="current"><a href="ofertas.html">Ofertas</a></li>
+									<li><a href="carrito.html">Carro</a></li>
+								</ul>
+							</nav>
+
+					</header>
+				</div>
+
+			<script>
+	function addToCart(nombre, precio, imagen, id) {
+      let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+      const productoExistente = carrito.find(p => p.id === id);
+
+      if (productoExistente) {
+        productoExistente.cantidad++;
+        productoExistente.subtotal = productoExistente.precio * productoExistente.cantidad;
+      } else {
+        carrito.push({
+          id,
+          nombre,
+          imagen,
+          precio,
+          cantidad: 1,
+          subtotal: precio
+        });
+      }
+
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      alert("Producto añadido al carrito.");
+    }</script>
+
+  <div class="tarjeta">
+    <img width="250" height="300" src="images/spider.jpg" alt="spider" />
+    <div class="contenido">
+      <div class="titulo">Marvel´s Spider-man 2</div>
+      <div class="descripcion">PS5</div>
+      <div class="precio">
+        <del>$69.990</del>
+        <span class="precio-descuento">$39.990</span>
+      </div>
+      <button onclick="addToCart('Marvel´s Spider-man 2', 39990, 'images/spider.jpg', '1')">Añadir al carrito</button>
+    </div>
+  </div>
+
+  <a href="carrito.html">Ir al carrito</a>
+
+		<!-- Producto 2 -->
+		<div class="tarjeta">
+		<img width="250" height="300" src="images/re4.jpg " alt="re4">
+			<div class="contenido">
+			<div class="titulo">Resident Evil 4</div>
+			<div class="descripcion">PS5</div>
+			<div class="precio">
+				<del>$69.990</del>
+				<span class="precio-descuento">$29.990</span>
+			</div>
+					<button onclick="addToCart('Resident Evil 4', 29990, 'images/re4.jpg', 're4')">Añadir al carrito</button>
+
+		</div>
+		</div>
+
+		<!-- Producto 3 -->
+		<div class="tarjeta">
+		<img width="250" height="300" src="images/god.webp" alt="god">
+		<div class="contenido">
+			<div class="titulo">God of War Ragnarök</div>
+			<div class="descripcion">PS5</div>
+			<div class="precio">
+		<del>$79.990</del>
+		<span class="precio-descuento">$49.990</span>
+			</div>
+		</div>
+		</div>
+
+		<!-- Producto 4 -->
+		<div class="tarjeta">
+		<img width="250" height="300" src="images/Mortal_Kombat_1_key_art.jpeg" alt="Mortal_Kombat_1_key_art">
+		<div class="contenido">
+			<div class="titulo">Mortal Kombat 1</div>
+			<div class="descripcion">PS5</div>
+			<div class="precio">
+		<del>$59.990</del>
+		<span class="precio-descuento">$16.990</span>
+			</div>
+		</div>
+		</div>
+
+		<div class="tarjeta">
+		<img width="250" height="300" src="images/bo7.webp" alt="bo7">
+		<div class="contenido">
+			<div class="titulo">Call of Duty</div>
+			<div class="descripcion">PS5</div>
+			<div class="precio">
+		<del>$69.990</del>
+		<span class="precio-descuento">$38.990</span>
+			</div>
+		</div>
+		</div>
+
+		<div class="tarjeta">
+		<img width="250" height="300" src="images/red.jpg" alt="red">
+		<div class="contenido">
+			<div class="titulo">Red Dead Redemption 2</div>
+			<div class="descripcion">PS5</div>
+			<div class="precio">
+		<del>$59.990</del>
+		<span class="precio-descuento">$14.990</span>
+			</div>
+		</div>
+		</div>
+
+		<div class="tarjeta">
+		<img width="250" height="300" src="images/silent.jpg" alt="gta">
+		<div class="contenido">
+			<div class="titulo">Silent Hill 2</div>
+			<div class="descripcion">PS5</div>
+			<div class="precio">
+		<del>$69.990</del>
+		<span class="precio-descuento">$43.990</span>
+			</div>
+		</div>
+		<button class="flecha derecha" onclick="scrollDerecha()">&#10095;</button>
+		</div>
+	
+
+		<!-- Scripts -->
+
+		
+	</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<!--
+	Verti by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Verti by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload no-sidebar">
+		<div id="page-wrapper">
+						<!-- Logo -->
+							<div id="">
+								<h1><a href="main.html"></a></h1>
+								<h2><center>Carrito de compras</center></h2>
+							</div>	
+
+						<!-- Nav -->
+							<nav id="nav">
+								<ul>
+									<li><a href="main.html">Inicio</a></li>
+									<li>
+										<a href="#">Productos</a>
+										<ul>
+											<li><a href="#">Lorem ipsum dolor</a></li>
+											<li><a href="#">Magna phasellus</a></li>
+											<li>
+												<a href="#">Phasellus consequat</a>
+												<ul>
+													<li><a href="#">Lorem ipsum dolor</a></li>
+													<li><a href="#">Phasellus consequat</a></li>
+													<li><a href="#">Magna phasellus</a></li>
+													<li><a href="#">Etiam dolore nisl</a></li>
+												</ul>
+											</li>
+											<li><a href="#">Veroeros feugiat</a></li>
+										</ul>
+									</li>
+									<li><a href="formulario.html">Formulario</a></li>
+									<li><a href="ofertas.html">Ofertas</a></li>
+									<li class="current"><a href="carrito.html">Carro</a></li>
+								</ul>
+							</nav>
+
+					</header>
+				</div>
+
+		<script>
+    let carrito = [];
+
+    function cargarCarrito() {
+      carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+      actualizarCarrito();
+    }
+
+    function actualizarCarrito() {
+      const tbody = document.getElementById('carrito-body');
+      tbody.innerHTML = '';
+
+      let total = 0;
+
+      carrito.forEach(producto => {
+        const fila = document.createElement('tr');
+        fila.innerHTML = `
+          <td><img src="${producto.imagen}" width="40" style="vertical-align:middle; margin-right:10px;">${producto.nombre}</td>
+          <td>${producto.cantidad}</td>
+          <td>$${producto.subtotal.toLocaleString()}</td>
+          <td><button onclick="eliminarDelCarrito('${producto.id}')">❌</button></td>
+        `;
+        tbody.appendChild(fila);
+        total += producto.subtotal;
+      });
+
+      document.getElementById('resumen-subtotal').innerText = `$${total.toLocaleString()}`;
+      document.getElementById('resumen-total').innerText = `$${total.toLocaleString()}`;
+    }
+
+    function eliminarDelCarrito(id) {
+      carrito = carrito.filter(p => p.id !== id);
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      actualizarCarrito();
+    }
+
+    function vaciarCarrito() {
+      carrito = [];
+      localStorage.removeItem('carrito');
+      actualizarCarrito();
+    }
+
+    window.onload = cargarCarrito;
+  </script>
+</head>
+<body>
+
+  <h1>Carrito de Compras</h1>
+
+  <div class="carrito-contenedor">
+    <div class="carrito-productos">
+      <table border="1" cellpadding="5">
+        <thead>
+          <tr>
+            <th>Detalle de producto</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="carrito-body"></tbody>
+      </table>
+      <button onclick="vaciarCarrito()">VACIAR EL CARRITO</button>
+    </div>
+
+    <div class="carrito-resumen">
+      <h3>Resumen</h3>
+      <p>Subtotal: <span id="resumen-subtotal">$0</span></p>
+      <p>Envío: <span>$0</span></p>
+      <hr />
+      <p><strong>Total compra:</strong> <span id="resumen-total">$0</span></p>
+      <button>COMPRAR</button>
+    </div>
+  </div>
+
+  <a href="ofertas.html">Volver a productos</a>
+
+</body>
+</html>
